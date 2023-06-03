@@ -1,0 +1,114 @@
+MDScreen:
+    name: "home"
+    on_enter: app.root.get_screen("home").ids.nav_drawer.set_state("close")
+
+    BoxLayout:
+        orientation: "vertical"
+        anchor_x: "center"
+        anchor_y: "center"
+
+        MDTopAppBar:
+            title: "KeyPace"
+            elevation: 0
+            left_action_items: [["menu", lambda x: app.root.get_screen("home").ids.nav_drawer.set_state("open")]]
+            size_hint_y: None
+            height: "48dp"
+
+        ScrollView:
+            GridLayout:
+                cols: 2
+                spacing: dp(16)
+                padding: dp(16)
+                size_hint: None, None
+                size: self.minimum_size
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+                MDCard:
+                    orientation: "vertical"
+                    on_release: app.goto_camera_lock()
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+
+                    Image:
+                        source: "assets/Camera.png"
+
+                    MDLabel:
+                        text: "Bloqueio de Câmera"
+                        theme_text_color: "Primary"
+                        halign: "center"
+                        valign: "center"
+
+                MDCard:
+                    orientation: "vertical"
+                    on_release: app.goto_app_lock()
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+
+                    Image:
+                        source: "assets/option.png"
+
+                    MDLabel:
+                        text: "Bloqueio de Aplicativos"
+                        theme_text_color: "Primary"
+                        halign: "center"
+                        valign: "center"
+
+                MDCard:
+                    orientation: "vertical"
+                    on_release: app.goto_screenshot_lock()
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+
+                    Image:
+                        source: "assets/screenshot.png"
+
+                    MDLabel:
+                        text: "Bloqueio de Captura de Screenshots"
+                        theme_text_color: "Primary"
+                        halign: "center"
+                        valign: "center"
+
+                MDCard:
+                    orientation: "vertical"
+                    on_release: app.goto_download_lock()
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+
+                    Image:
+                        source: "assets/download.png"
+
+                    MDLabel:
+                        text: "Bloqueio de Downloads"
+                        theme_text_color: "Primary"
+                        halign: "center"
+                        valign: "center"
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        BoxLayout:
+            orientation: "vertical"
+
+            ScrollView:
+
+                MDList:
+
+                    OneLineIconListItem:
+                        text: "Trocar Informações"
+                        on_release: app.open_info_dialog()
+                        IconLeftWidget:
+                            icon: "account"
+
+                    OneLineIconListItem:
+                        text: "Quem Somos"
+                        on_release: app.open_about_us_dialog()
+                        IconLeftWidget:
+                            icon: "information"
+
+                    OneLineIconListItem:
+                        text: "Sair da Conta"
+                        on_release:
+                            app.logout()
+                            app.root.get_screen("home").ids.nav_drawer.set_state("close")
+                        IconLeftWidget:
+                            icon: "exit-to-app"

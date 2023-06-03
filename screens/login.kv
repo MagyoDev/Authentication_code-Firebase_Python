@@ -1,0 +1,113 @@
+MDScreen:
+    name: "login"
+
+    on_pre_enter:
+        self.ids.float_layout.size = self.size
+
+    BoxLayout:
+        orientation: "vertical"
+
+        FloatLayout:
+            id: float_layout
+            specific_text_color: app.theme_cls.primary_color
+            elevation: 0
+            size_hint: None, None
+            size: root.width, root.height - self.parent.children[0].height
+
+            Image:
+                source: "assets/UserIcon.png"
+                size_hint: (0.4, 0.4)
+                pos_hint: {"center_x": 0.5, "center_y": 0.8}
+
+            MDLabel:
+                text: "Seja bem-vindo"
+                font_style: "H5"
+                bold: True
+                halign: "center"
+                pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+            MDLabel:
+                text: "Faça o login para continuar"
+                font_style: "Caption"
+                halign: "center"
+                pos_hint: {"center_x": 0.5, "center_y": 0.61}
+
+            MDTextField:
+                id: email_field
+                hint_text: "Email"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                size_hint_x: .8
+                icon_right: "email"
+                icon_right_color: app.theme_cls.primary_color
+
+            MDTextField:
+                id: password_field
+                hint_text: "Senha"
+                pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                size_hint_x: .8
+                password: True
+                icon_right: "key-variant"
+                icon_right_color: app.theme_cls.primary_color
+
+            MDRaisedButton:
+                text: "LOGIN"
+                elevation: 0
+                pos_hint: {"center_x": .5, "center_y": .3}
+                size_hint_x: .8
+                on_release:
+                    app.autenticar(email_field.text, password_field.text)
+
+            MDTextButton:
+                text: "ESQUECEU A SENHA?"
+                font_size: "12sp"
+                pos_hint: {"center_x": 0.5, "center_y": .24}
+                size_hint_x: .8
+
+            MDLabel:
+                text: "ou"
+                pos_hint: {"center_y": .2}
+                font_size: "13sp"
+                halign: "center"
+
+            MDFloatLayout:
+                md_bg_color: rgba(178, 178, 178, 255)
+                size_hint: .3, .002
+                pos_hint: {"center_x": 0.3, "center_y": .2}
+
+            MDFloatLayout:
+                md_bg_color: rgba(178, 178, 178, 255)
+                size_hint: .3, .002
+                pos_hint: {"center_x": 0.7, "center_y": .2}
+
+            MDLabel:
+                text: "Login nas redes sociais"
+                font_size: "13sp"
+                halign: "center"
+                pos_hint: {"center_y": .16}
+
+            MDGridLayout:
+                cols: 3
+                size_hint: .48, .07
+                pos_hint: {"center_x": .5, "center_y": .1}
+
+                Image:
+                    source: "assets/google.png"
+
+                Image:
+                    source: "assets/facebook.png"
+
+                Image:
+                    source: "assets/apple.png"
+
+            MDLabel:
+                text: "Não tem uma conta?"
+                pos_hint: {"center_x": .68, "center_y": .04}
+                font_size: "11sp"
+
+            MDTextButton:
+                text: "Cadastre-se"
+                pos_hint: {"center_x": .75, "center_y": .04}
+                font_size: "11sp"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "signup"

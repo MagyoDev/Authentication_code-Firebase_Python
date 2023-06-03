@@ -1,0 +1,16 @@
+MDScreen:
+    name: "quem_somos"
+
+    FloatLayout:
+        MDTopAppBar:
+            title: "Quem Somos"
+            elevation: 0
+            left_action_items: [["arrow-left", lambda x: app.goto_home()]]
+            pos_hint: {"top": 1}
+
+        MDLabel:
+            text: "Criado por Alan de Lima Silva como um projeto inicialmente de teste, mas que evoluiu para um desenvolvimento completo utilizando apenas os prompts do modelo ChatGPT, um poderoso modelo de linguagem baseado em IA. Essa abordagem nos permitiu explorar a criatividade da IA no desenvolvimento do projeto e encontrar soluções inovadoras. No entanto, é importante ressaltar que a utilização de IA para geração de código não é recomendada como uma prática geral. Recomendamos seu uso para fazer perguntas e buscar respostas para sanar dúvidas. Esperamos que aproveite e conheça mais sobre a KeyPace e nossos serviços de segurança digital."
+            size: self.texture_size
+            size_hint_y: None
+            height: self.texture_size[1]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}

@@ -1,0 +1,59 @@
+MDScreen:
+    name: "signup"
+
+    on_pre_enter:
+        self.ids.float_layout.size = self.size
+
+    FloatLayout:
+        id: float_layout
+        specific_text_color: app.theme_cls.primary_color
+        elevation: 0
+        size_hint: None, None
+        size: root.width, root.height - self.parent.children[0].height
+
+        Image:
+            source: "assets/UserIcon.png"
+            size_hint: (0.4, 0.4)
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+
+        MDLabel:
+            text: "Crie uma nova conta"
+            font_style: "H5"
+            bold: True
+            halign: "center"
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+        MDTextField:
+            id: email_field
+            hint_text: "Email"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint_x: .8
+            icon_right: "email"
+            icon_right_color: app.theme_cls.primary_color
+
+        MDTextField:
+            id: password_field
+            hint_text: "Senha"
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            size_hint_x: .8
+            password: True
+            icon_right: "key-variant"
+            icon_right_color: app.theme_cls.primary_color
+
+        MDRaisedButton:
+            text: "CADASTRAR"
+            elevation: 0
+            pos_hint: {"center_x": .5, "center_y": .3}
+            size_hint_x: .8
+            on_release:
+                app.cadastrar(email_field.text, password_field.text)
+                app.root.current = "login"
+
+        MDTextButton:
+            text: "Já tem uma conta? Faça o login"
+            font_size: "12sp"
+            pos_hint: {"center_x": 0.5, "center_y": .24}
+            size_hint_x: .8
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "login"

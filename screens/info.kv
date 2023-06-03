@@ -1,0 +1,42 @@
+MDScreen:
+    name: "info"
+
+    MDFloatLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "20dp"
+
+            MDLabel:
+                text: "Trocar Informações"
+                theme_text_color: "Primary"
+                font_style: "H5"
+                halign: "center"
+
+            MDTextField:
+                id: senha_antiga_field
+                hint_text: "Senha Antiga"
+                required: True
+                helper_text: "Digite a senha antiga"
+                helper_text_mode: "on_focus"
+                password: True
+                icon_right: "eye"
+                icon_right_color: app.theme_cls.primary_color
+
+            MDTextField:
+                id: senha_nova_field
+                hint_text: "Nova Senha"
+                required: True
+                helper_text: "Digite a nova senha"
+                helper_text_mode: "on_focus"
+                password: True
+                icon_right: "eye"
+                icon_right_color: app.theme_cls.primary_color
+
+            MDRaisedButton:
+                text: "Trocar Senha"
+                on_release: app.trocar_senha(app.email_autenticado, senha_antiga_field.text, senha_nova_field.text)
+
+            MDRaisedButton:
+                text: "Voltar"
+                on_release: app.goto_home()

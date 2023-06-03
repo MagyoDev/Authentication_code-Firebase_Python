@@ -1,0 +1,15 @@
+MDScreen:
+    name: "welcome"
+    md_bg_color: 0, 0, 0, 255
+    on_pre_enter:
+        self.ids.float_layout.size = self.size
+
+    FloatLayout:
+        id: float_layout
+        size_hint: None, None
+        size: root.width, root.height
+
+        Image:
+            source: "assets/KeyPace.png"
+            size_hint: 1.01, 1.01
+            pos_hint: {"center_x": .5, "center_y": .5}
