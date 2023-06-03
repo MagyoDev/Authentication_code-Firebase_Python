@@ -1,4 +1,4 @@
-# firebase-user-authentication-python
+# Authentication code: Firebase Python
 
 Este projeto, inicialmente concebido como um desafio pessoal para aprimorar minhas habilidades de programação, acabou se transformando em uma implementação totalmente baseada no modelo GPT (Generative Pre-trained Transformer). 
 
